@@ -6,12 +6,17 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const refs = {
     inputDate: document.querySelector('#datetime-picker'),
-    buttonStart: document.querySelector('[data-start]'),
+  buttonStart: document.querySelector('[data-start]'),
+  timer: document.querySelector('.timer'),
+    value:document.querySelector('.field'),
     days: document.querySelector('[data-days]'),
     hours: document.querySelector('[data-hours]'),
     minutes: document.querySelector('[data-minutes]'),
     seconds: document.querySelector('[data-seconds]')
 }
+
+// refs.timer.style.display = 'flex';
+refs.value.style.display = 'flex';
 
 const options = {
   enableTime: true,

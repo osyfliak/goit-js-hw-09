@@ -12,7 +12,7 @@ function onTabButtonStart() {
     refs.buttonStart.disabled = true;
     refs.buttonStop.disabled = false;
 
-    timerId = setInterval(() => {
+    timerIdd = setInterval(() => {
         refs.body.style.backgroundColor = getRandomHexColor();
     }, 1000); 
 }
@@ -21,7 +21,7 @@ function onTabButtonStop() {
     refs.buttonStart.disabled = false;
     refs.buttonStop.disabled = true;
 
-    clearInterval(timerId);
+    clearInterval(timerIdd);
 }
 
 function getRandomHexColor() {
