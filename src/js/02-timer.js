@@ -5,8 +5,9 @@ import "flatpickr/dist/flatpickr.min.css";
 
 
 const refs = {
+    inputDate: document.querySelector('#datetime-picker'),
     buttonStart: document.querySelector('[data-start]'),
-    days: document.querySelector('[data-dayst]'),
+    days: document.querySelector('[data-days]'),
     hours: document.querySelector('[data-hours]'),
     minutes: document.querySelector('[data-minutes]'),
     seconds: document.querySelector('[data-seconds]')
@@ -24,12 +25,11 @@ const options = {
           refs.buttonStart.disabled = true;
       } else {
           refs.buttonStart.disabled = false;
-           console.log(selectedDates[0]);
       }
   },
 };
 
-flatpickr("#datetime-picker", options);
+flatpickr('#datetime-picker', options);
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -50,6 +50,35 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+refs.buttonStart.addEventListener('click', onButtonStartClick);
+ 
+function onButtonStartClick() {
+
+  intervalId = setInterval(() => {
+    const time = new Date(refs.inputDate.value) - new Date();
+    if (time >= 0) {
+      const timeList = convertMs(time);
+      addTime(timeList);
+
+    } else {
+      clearInterval(intervalId);
+      return Notify.success('Виконано');
+    }
+    }, 1000)
+}
+
+function addTime({days, hours,  minutes, seconds  }) {
+refs.days.textContent = addLeadingZero(days);
+refs.hours.textContent = addLeadingZero(hours);
+refs.minutes.textContent = addLeadingZero(minutes);
+refs.seconds.textContent = addLeadingZero(seconds);
+}
+
+
+
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
+}
 
 
 
