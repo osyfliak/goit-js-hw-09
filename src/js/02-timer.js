@@ -15,8 +15,7 @@ const refs = {
     seconds: document.querySelector('[data-seconds]')
 }
 
-// refs.timer.style.display = 'flex';
-refs.value.style.display = 'flex';
+
 
 const options = {
   enableTime: true,
