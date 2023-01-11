@@ -3,7 +3,7 @@ const refs = {
     buttonStop: document.querySelector('[data-stop]'),
     body: document.querySelector('body')
 }
-let timerIdd;
+let timerId;
 refs.buttonStop.disabled = true;
 refs.buttonStart.addEventListener('click', onTabButtonStart);
 refs.buttonStop.addEventListener('click', onTabButtonStop);
@@ -12,7 +12,7 @@ function onTabButtonStart() {
     refs.buttonStart.disabled = true;
     refs.buttonStop.disabled = false;
 
- timerIdd = setInterval(() => {
+ timerId = setInterval(() => {
         refs.body.style.backgroundColor = getRandomHexColor();
     }, 1000); 
 }
@@ -21,7 +21,7 @@ function onTabButtonStop() {
     refs.buttonStart.disabled = false;
     refs.buttonStop.disabled = true;
 
-    clearInterval(timerIdd);
+    clearInterval(timerId);
 }
 
 function getRandomHexColor() {
